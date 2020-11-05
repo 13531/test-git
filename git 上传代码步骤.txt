@@ -1,0 +1,49 @@
+/*注释内容为转载时添加 ,非原文*/
+
+第一步：建立git仓库 /*新仓库*/
+
+cd到你的本地项目根目录下，执行git命令，此命令会在当前目录下创建一个.git文件夹。
+
+git init
+
+第二步：将项目的所有文件添加到仓库中
+
+git add .
+
+这个命令会把当前路径下的所有文件，添加到待上传的文件列表中。
+
+如果想添加某个特定的文件，只需把.换成特定的文件名即可
+
+第三步：将add的文件commit到仓库
+
+git commit -m "注释语句"
+
+第四步：去github上创建自己的repository，点击个人头像旁边的加号  如下图所示：
+
+/*创建时{不要勾选}Add readme.md 以及其他自动添加文件的勾*/
+点击New repository，填好所有信息后点击create repository就会进入到类似下面的一个页面，拿到创建的仓库的https地址
+
+
+第五步：将本地的仓库关联到github上
+
+git remote add origin https://自己的仓库url地址
+/*例如: git remote add origin https://github.com/13531/test-git */
+
+第六步，上传代码到github远程仓库
+
+git push -u origin master
+
+执行完后，如果没有异常，等待执行完就上传成功了，中间可能会让你输入Username和Password，你只要输入github的账号和密码就行了.
+/* 中间弹出一个小窗口打开授权网页,输入登录信息授权后回到git */
+
+
+/*如果前面勾选增加readme.md 等文件,到这里就会出现问题*/
+第一次上传有可能会遇到push失败的情况，那是因为跟SVN一样，github上有一个README.md 文件没有下载下来 。
+
+我们得先git pull --rebase origin master  ，然后执行git push -u origin master 就可以成功啦
+
+文章来源:
+作者：简单就好wfc
+链接：https://www.jianshu.com/p/f290829e42f8 
+来源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
