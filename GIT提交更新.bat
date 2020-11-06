@@ -114,8 +114,6 @@ exit 0
 
 goto:eof
 
-
-
 :gobackToMenu
 echo.
 choice /C c /n /m "按键[C]返回主菜单"
@@ -129,8 +127,10 @@ git remote -v
 echo.
 echo 当前目录：%cd%
 echo.
-echo 用户名:&&git config user.name
-echo 邮箱:&&git config user.email
+echo 用户名:
+git config user.name
+echo 邮箱:
+git config user.email
 echo.
 echo 请选择更新模式:
 echo 按键[1] git add .     [新建，修改] ( 无[删除])
@@ -153,11 +153,13 @@ git add -A .
 if !errorlevel!==6  (
 goto menuChoice
 )
+
 :inputcommit
 set /p var=请输入提交说明:
 ::去除所有空格进行验证
 set "str=!var: =!"
 if "!str!"=="" goto inputcommit
+
 echo;
 echo 提交说明为：  !var!
 echo -----------------------[git message]-------------------------
