@@ -142,7 +142,7 @@ echo.
 
 echo 开始提交代码到本地仓库
 if !errorlevel!==1  (
-git add -A .
+git add .
 )
 if !errorlevel!==3  (
 git add -u . 
