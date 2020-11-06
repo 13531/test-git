@@ -170,9 +170,9 @@ echo -----------------------[git message]-------------------------
 git push origin master
 echo -------------------------------------------------------------
 echo.
-echo 批处理执行完毕！
+echo (如果出现错误, 按键 [1] 执行git pull origin master 尝试解决问题)
 echo.
-echo 如果出现错误, 按键 [1] 执行git pull origin master 尝试解决问题
+echo 批处理执行完毕！
 echo.
 echo.
 echo 按键 [C] 返回主菜单
