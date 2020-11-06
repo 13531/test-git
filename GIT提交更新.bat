@@ -189,18 +189,18 @@ if !errorlevel!==1 (
 		git push origin master
 		echo -------------------------------------------------------------
 		echo 批处理执行完毕！
-		:gobackToMenu
+		call:gobackToMenu
 	)	
 	if !errorlevel!==2 (
 		 goto menuChoice
 	)
 	
-	:gobackToMenu
+	call:gobackToMenu
 
 )
 if !errorlevel!==2  (
  goto menuChoice
 ) 
 
-:gobackToMenu
+call:gobackToMenu
 goto:eof
