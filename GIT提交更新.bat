@@ -132,23 +132,27 @@ git config user.name
 echo 邮箱:
 git config user.email
 echo.
+set mode_1=add -A .
+set mode_2=add .
+set mode_3=add -U .
+
 echo 请选择更新模式:
-echo 按键[1] git add .    
-echo 按键[3] git add -u . 
-echo 按键[5] git add -a .  
+echo 按键[1] git !mode_1!    
+echo 按键[3] git !mode_2! 
+echo 按键[5] git !mode_3!   
 echo 按键[c] 返回主菜单
 choice /C 12345c /m "" /n
 echo.
 
 echo 开始提交代码到本地仓库
 if !errorlevel!==1  (
-git add .
+git !mode_1!  
 )
 if !errorlevel!==3  (
-git add -u . 
+git !mode_2! 
 )
 if !errorlevel!==5  (
-git add -A .
+git !mode_3!   
 )
 if !errorlevel!==6  (
 goto menuChoice
