@@ -133,9 +133,9 @@ echo 邮箱:
 git config user.email
 echo.
 echo 请选择更新模式:
-echo 按键[1] git add .     [新建，修改] ( 无[删除])
-echo 按键[3] git add -u .  [修改，删除] ( 无[新建])
-echo 按键[5] git add -a .  [新建，更改，删除] (所有操作 )
+echo 按键[1] git add .    
+echo 按键[3] git add -u . 
+echo 按键[5] git add -a .  
 echo 按键[c] 返回主菜单
 choice /C 12345c /m "" /n
 echo.

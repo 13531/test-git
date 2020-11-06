@@ -1,4 +1,10 @@
-   
-git add .     [新建，修改]  无[删除]
-git add -u .  [修改，删除]  无[新建]
-git add -a .  所有操作 [新建，更改，删除]
+
+git add .与git add -A的区别
+
+git添加文件的时候一共有git add -A和git add .和git add -u
+在功能上虽然都是提交 但是存在一些差距
+
+    git add .：这个命令会监控工作区的状态树，会把工作区的所有变化提交到暂存区，包括修改内容的文件（modified）和新文件（new），但是不包括被删除的文件
+    git add -u：（git add --update缩写）这个命令不会提交新文件（untracked file）-----仅仅作为修改提交被修改（modified）和被删除（delete）文件，不包括新文件（new）
+    git add -A：（git add -all缩写）是上面两个命令的集合，会提交所有的文件包括修改新建和删除的
+
