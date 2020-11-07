@@ -179,9 +179,11 @@ echo.
 echo 批处理执行完毕！
 echo.
 echo.
+echo 15秒无操作自动关闭窗口
+echo 按键 [0] 立即关闭窗口
 echo 按键 [C] 返回主菜单
 echo;
-choice /C 1c /n
+choice /C 1c0 /n /d 0 /t 15
 if !errorlevel!==1 (
 	echo -----------------[git pull origin master]--------------------
 	git pull origin master
@@ -194,8 +196,8 @@ if !errorlevel!==1 (
 	if !errorlevel!==1 (
 		git push origin master
 		echo -------------------------------------------------------------
-		echo 批处理执行完毕！
-		call:gobackToMenu
+		call:autoExit
+		
 	)	
 	if !errorlevel!==2 (
 		 goto menuChoice
@@ -207,6 +209,22 @@ if !errorlevel!==1 (
 if !errorlevel!==2  (
  goto menuChoice
 ) 
-
+if !errorlevel!==3  (
+ exit 0
+) 
 call:gobackToMenu
+goto:eof
+
+
+:autoExit
+echo 批处理执行完毕！ 15秒无操作自动关闭窗口
+echo 按键 [1] 保留窗口; 按键 [0] 立即关闭窗口
+choice /C 10 /n /d 0 /t 15
+if !errorlevel!==1 (
+	echo 选择了保留窗口
+	call:gobackToMenu
+)
+if !errorlevel!==2 (
+ exit 0
+)
 goto:eof
