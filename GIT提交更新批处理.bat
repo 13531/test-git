@@ -1,4 +1,5 @@
 @echo off
+
 ::开启该项后 %var%  !var!显示的值不同
 setlocal enabledelayedexpansion
 ::setlocal disabledelayedexpansion
@@ -12,6 +13,7 @@ goto:eof
 ::---------------------------------------------------------------------
 
 :showMenu
+echo %cd%
 echo [1]提交更新
 echo [2] 
 echo [3]显示/设置 用户名和邮箱
@@ -19,7 +21,7 @@ echo [4]显示/设置 Git关联的远程仓库地址
 echo [5]
 echo [6]
 echo [7]
-echo [8] 
+echo [8]创建.gitignore忽略规则文件
 echo [9]切换到cmd命令行
 echo [C]退出
 echo -------------------------------------------------------------
@@ -101,6 +103,9 @@ call:gobackToMenu
 )
 if !errorlevel!==8  (
 
+echo __recycle/>> .gitignore
+md __recycle
+echo 完成
 call:gobackToMenu
 )
 if !errorlevel!==9  (
@@ -176,10 +181,10 @@ echo -------------------------------------------------------------
 echo.
 echo (如果出现错误, 按键 [1] 执行git pull origin master 尝试解决问题)
 echo.
-echo 批处理执行完毕！
+echo 批处理执行完毕！15秒无操作自动关闭窗口
 echo.
 echo.
-echo 15秒无操作自动关闭窗口
+echo 按键 [1] 尝试修复错误
 echo 按键 [0] 立即关闭窗口
 echo 按键 [C] 返回主菜单
 echo;
