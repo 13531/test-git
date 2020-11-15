@@ -144,9 +144,10 @@ set mode_3=add -U .
 echo 请选择更新模式:
 echo 按键[1] git !mode_1!    
 echo 按键[3] git !mode_2! 
-echo 按键[5] git !mode_3!   
+echo 按键[5] git !mode_3!  
+echo 按键[7] git !mode_1!  ,下一步使用默认提交说明
 echo 按键[c] 返回主菜单
-choice /C 12345c /m "" /n
+choice /C 123456789c /m "" /n
 echo.
 
 echo 开始提交代码到本地仓库
@@ -159,21 +160,28 @@ git !mode_2!
 if !errorlevel!==5  (
 git !mode_3!   
 )
-if !errorlevel!==6  (
+if !errorlevel!==7  (
+git !mode_1!   
+set var=%date%
+goto defaultcommit
+)
+if !errorlevel!==10  (
 goto menuChoice
 )
 
 :inputcommit
 set /p var=请输入提交说明:
-::去除所有空格进行验证
+::去除所有空格进行验证 
 set "str=!var: =!"
 if "!str!"=="" goto inputcommit
 if "!var!"=="" goto inputcommit
 
+:defaultcommit
+
 echo;
 echo 提交说明为：  !var!
 echo -----------------------[git message]-------------------------
-git commit -m !var!
+git commit -m "!var!"
 echo -------------------------------------------------------------
 echo 将变更情况提交到远程git服务器
 echo -----------------------[git message]-------------------------
